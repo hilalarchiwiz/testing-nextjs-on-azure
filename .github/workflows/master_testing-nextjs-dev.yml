@@ -30,7 +30,7 @@ jobs:
           npm run test --if-present
           
       - name: Zip artifact for deployment
-        run: zip -r release.zip .next static package.json posts -x "*.git*" "node_modules/*"
+        run: zip release.zip .next static package.json posts
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
@@ -52,7 +52,7 @@ jobs:
           name: node-app
 
       - name: Unzip artifact for deployment
-        run: unzip release.zip
+        run: unzip -o release.zip
       
       - name: Login to Azure
         uses: azure/login@v2
@@ -70,5 +70,6 @@ jobs:
           package: .
 
           
+
 
 
